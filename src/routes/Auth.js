@@ -31,9 +31,8 @@ const Auth = () => {
 			if (newAccount) {
 				data = await createUserWithEmailAndPassword(auth, email, password);
 			} else {
-				data = await signInWithEmailAndPassword(auth, email, password);
+				await signInWithEmailAndPassword(auth, email, password);
 			}
-			console.log('data', data);
 		} catch (err) {
 			setError(err.message);
 		}
