@@ -33,12 +33,12 @@ const Profile = ({ userObj, refreshUser }) => {
 		getMyNweets();
 	}, []);
 
-	const onSubmit = async (e) => {
-		e.preventDefault();
-		if (userObj.displayName !== newDisplayName) {
-			await updateProfile(getAuth.currentUser, { displayName: newDisplayName });
-			refreshUser();
-		}
+	const onSubmit = async (event) => {
+		event.preventDefault();
+		await updateProfile(await getAuth.currentUser, {
+			displayName: newDisplayName,
+		});
+		refreshUser();
 	};
 
 	return (
