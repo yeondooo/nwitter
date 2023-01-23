@@ -17,7 +17,7 @@ function App() {
 					uid: user.uid,
 				});
 			} else {
-				setIsLoggedIn(false);
+				setUserObj(null);
 			}
 			setInit(true);
 		});
