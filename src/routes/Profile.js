@@ -15,9 +15,7 @@ const Profile = ({ userObj, refreshUser }) => {
 	};
 
 	const onChange = (e) => {
-		const {
-			target: { value },
-		} = e;
+		const { value } = e.target;
 		setNewDisplayName(value);
 	};
 
@@ -33,12 +31,11 @@ const Profile = ({ userObj, refreshUser }) => {
 		getMyNweets();
 	}, []);
 
-	const onSubmit = async (event) => {
-		event.preventDefault();
-		await updateProfile(await getAuth.currentUser, {
-			displayName: newDisplayName,
-		});
-		refreshUser();
+	const onSubmit = async (e) => {
+		e.preventDefault();
+		if (userObj.displayName !== newDisplayName) {
+			await updateProfile(auth.currentUser, { displayName: newDisplayName });
+		}
 	};
 
 	return (
