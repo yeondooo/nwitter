@@ -6,15 +6,16 @@ function App() {
 	const [isLoggedIn, setIsLoggedIn] = useState(false);
 	const [init, setInit] = useState(false);
 	const [userObj, setUserObj] = useState(null);
+	const auth = getAuth();
 
 	useEffect(() => {
-		const auth = getAuth();
 		onAuthStateChanged(auth, (user) => {
 			if (user) {
 				setIsLoggedIn(true);
 				setUserObj({
 					displayName: user.displayName,
 					uid: user.uid,
+					updateProfile: (args) => updateProfile(user, { displayName: user.displayName }),
 				});
 			} else {
 				setUserObj(null);
@@ -24,11 +25,11 @@ function App() {
 	}, []);
 
 	const refreshUser = () => {
-		const user = getAuth.currentUser;
+		const user = auth.currentUser;
 		setUserObj({
 			displayName: user.displayName,
 			uid: user.uid,
-			updateProfile: (args) => user.updateProfile(args),
+			updateProfile: (args) => updateProfile(user, { displayName: user.displayName }),
 		});
 	};
 

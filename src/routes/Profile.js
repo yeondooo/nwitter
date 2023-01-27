@@ -21,10 +21,10 @@ const Profile = ({ userObj, refreshUser }) => {
 
 	const getMyNweets = async () => {
 		const q = query(collection(dbService, 'nweets'), where('creatorId', '==', userObj.uid));
-		const querySnapshot = await getDocs(q);
-		querySnapshot.forEach((doc) => {
-			console.log(doc.id, ' => ', doc.data());
-		});
+		// const querySnapshot = await getDocs(q);
+		// querySnapshot.forEach((doc) => {
+		// 	console.log(doc.id, ' => ', doc.data());
+		// });
 	};
 
 	useEffect(() => {
@@ -35,6 +35,7 @@ const Profile = ({ userObj, refreshUser }) => {
 		e.preventDefault();
 		if (userObj.displayName !== newDisplayName) {
 			await updateProfile(auth.currentUser, { displayName: newDisplayName });
+			refreshUser();
 		}
 	};
 
