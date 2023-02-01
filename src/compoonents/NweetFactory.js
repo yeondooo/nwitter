@@ -62,13 +62,13 @@ const NweetFactory = ({ userObj }) => {
 					value={nweet}
 					onChange={onChange}
 					type="text"
-					placeholder="What's on your mind?"
+					placeholder="120자 이내로 입력해주세요."
 					maxLength={120}
 				/>
 				<input type="submit" value="&rarr;" className="factoryInput__arrow" />
 			</div>
 			<label htmlFor="attach-file" className="factoryInput__label">
-				<span>Add photos</span>
+				<span>사진 추가</span>
 				<FontAwesomeIcon icon={faPlus} />
 			</label>
 			<input

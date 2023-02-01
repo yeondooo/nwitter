@@ -12,7 +12,7 @@ const Nweet = ({ nweetObj, isOwner }) => {
 	const urlRef = ref(storageService, nweetObj.attachmentURL);
 
 	const onDeleteClick = async () => {
-		const ok = window.confirm('Are you sure you want to delete this nweet?');
+		const ok = window.confirm('글을 삭제 할까요?');
 		if (ok) {
 			await deleteDoc(NweetTextRef);
 			if (nweetObj.attachmentUrl !== '') {
@@ -51,10 +51,10 @@ const Nweet = ({ nweetObj, isOwner }) => {
 							onChange={onChange}
 							className="formInput"
 						/>
-						<input type="submit" value="Update Nweet" className="formBtn" />
+						<input type="submit" value="완료" className="formBtn" />
 					</form>
 					<span onClick={toggleEditing} className="formBtn cancelBtn">
-						Cancel
+						취소
 					</span>
 				</>
 			) : (
